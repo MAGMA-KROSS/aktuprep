@@ -285,7 +285,7 @@ const UnitDifficulty = ({ data = [] }) => {
   );
 };
 
-const ImportantQuestions = ({ data = [] }) => {
+const ImportantQuestions = ({ data = [], subjectId }) => {
   const [selectedUnit, setSelectedUnit] = useState('1');
 
   const filteredQuestions = data.filter(q => q.unit === parseInt(selectedUnit));
@@ -339,40 +339,42 @@ const ImportantQuestions = ({ data = [] }) => {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Card hover className="p-6 flex flex-col justify-between h-full">
-                    <div>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {q.tags.map(tag => (
-                          <Badge 
-                            key={tag} 
-                            variant={tag === 'HIGHLY REPEATED' ? 'warning' : tag === 'MOST EXPECTED' ? 'success' : 'default'}
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
+                  <Link href={`/StartPrep/question?subjectId=${subjectId}&questionId=${q.id}`} className="block h-full group">
+                    <Card hover className="p-6 flex flex-col justify-between h-full border-white/10 hover:border-white/20 transition-all">
+                      <div>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {q.tags.map(tag => (
+                            <Badge 
+                              key={tag} 
+                              variant={tag === 'HIGHLY REPEATED' ? 'warning' : tag === 'MOST EXPECTED' ? 'success' : 'default'}
+                            >
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                        <h3 className="text-lg font-medium text-white mb-4 leading-snug group-hover:text-zinc-200 transition-colors">
+                          {q.title}
+                        </h3>
                       </div>
-                      <h3 className="text-lg font-medium text-white mb-4 leading-snug group-hover:text-zinc-200">
-                        {q.title}
-                      </h3>
-                    </div>
-                    
-                    <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-auto">
-                      <div className="flex items-center gap-4 text-sm text-zinc-500">
-                        <span className="flex items-center gap-1 font-medium text-zinc-400">
-                          <BookOpen className="w-4 h-4 text-zinc-500" /> Unit {q.unit}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <FileText className="w-4 h-4" /> {q.marks} Marks
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {q.frequency && <span className="text-xs text-zinc-500">{q.frequency} Exams</span>}
-                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
-                          <span className="text-xs font-bold text-white">{q.probability}%</span>
+                      
+                      <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-auto">
+                        <div className="flex items-center gap-4 text-sm text-zinc-500">
+                          <span className="flex items-center gap-1 font-medium text-zinc-400">
+                            <BookOpen className="w-4 h-4 text-zinc-500" /> Unit {q.unit}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <FileText className="w-4 h-4" /> {q.marks} Marks
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {q.frequency && <span className="text-xs text-zinc-500">{q.frequency} Exams</span>}
+                          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
+                            <span className="text-xs font-bold text-white">{q.probability}%</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Card>
+                    </Card>
+                  </Link>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -505,7 +507,7 @@ function AnalysisContent() {
           <>
             <DashboardHero sessionData={sessionData} />
             <UnitDifficulty data={unitDifficulty} />
-            <ImportantQuestions data={questions} />
+            <ImportantQuestions data={questions} subjectId={subjectId} />
           </>
         ) : (
           <div className="container mx-auto px-6 py-32 text-center">

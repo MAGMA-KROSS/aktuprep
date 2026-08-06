@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
+import Card from "@/Components/Card";
+import Badge from "@/Components/Badge";
 import { 
   Target, 
   BrainCircuit,
@@ -68,29 +72,6 @@ const MOCK_SUBJECTS = {
   ]
 };
 
-const Badge = ({ children, variant = 'default', className = '' }) => {
-  const variants = {
-    default: "border-zinc-800 bg-zinc-900/50 text-zinc-300",
-    primary: "border-white/20 bg-white/10 text-white",
-    success: "border-emerald-800 bg-emerald-950/50 text-emerald-400",
-    warning: "border-amber-800 bg-amber-950/50 text-amber-400",
-    danger: "border-red-800 bg-red-950/50 text-red-400",
-  };
-  return (
-    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase transition-colors ${variants[variant]} ${className}`}>
-      {children}
-    </span>
-  );
-};
-
-const Card = ({ children, className = '', hover = false, onClick }) => (
-  <div 
-    onClick={onClick}
-    className={`rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden ${hover ? 'hover:bg-white/[0.05] hover:border-white/20 transition-all cursor-pointer' : ''} ${className}`}
-  >
-    {children}
-  </div>
-);
 
 export default function StartPrepPage() {
   const router = useRouter();
@@ -121,20 +102,7 @@ export default function StartPrepPage() {
       {/* Background radial glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-white/[0.02] blur-[120px] rounded-full pointer-events-none -z-10" />
 
-      {/* Header */}
-      <header className="w-full border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <GraduationCap className="text-black w-5 h-5" />
-              </div>
-              <span className="text-white font-bold tracking-tight text-lg">PrepAKTU</span>
-            </div>
-          </Link>
-          <span className="text-xs text-zinc-500 font-medium">Smart Preparation Assistant</span>
-        </div>
-      </header>
+      <Navbar mode="prep" />
 
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center p-6 my-12">
@@ -247,10 +215,7 @@ export default function StartPrepPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-6 text-center text-xs text-zinc-600 border-t border-white/10 bg-black/50 backdrop-blur-md">
-        <p>© 2026 PrepAKTU. Study smart, not hard.</p>
-      </footer>
+      <Footer simple={true} />
     </div>
   );
 }

@@ -26,7 +26,11 @@ import {
 import { getQuestionExplanation } from '@/data/questionExplanations';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-
+import Navbar from '@/Components/Navbar';
+import Button from '@/Components/Button';
+import Badge from '@/Components/Badge';
+import Card from '@/Components/Card';
+import Footer from '@/Components/Footer';
 // Custom inline SVG Youtube icon
 const YoutubeIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -34,44 +38,7 @@ const YoutubeIcon = (props) => (
   </svg>
 );
 
-// Reusable Components
-const Button = ({ children, variant = 'primary', className = '', onClick, ...props }) => {
-  const baseStyle = "inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 rounded-md";
-  const variants = {
-    primary: "bg-white text-black hover:bg-zinc-200 shadow-[0_0_15px_rgba(255,255,255,0.1)]",
-    secondary: "bg-zinc-900 text-white border border-zinc-800 hover:bg-zinc-800 hover:text-zinc-50",
-    ghost: "hover:bg-zinc-800 hover:text-zinc-50 text-zinc-400",
-  };
-  return (
-    <button onClick={onClick} className={`${baseStyle} ${variants[variant]} ${className}`} {...props}>
-      {children}
-    </button>
-  );
-};
 
-const Badge = ({ children, variant = 'default', className = '' }) => {
-  const variants = {
-    default: "border-zinc-800 bg-zinc-900/50 text-zinc-300",
-    primary: "border-white/20 bg-white/10 text-white",
-    success: "border-emerald-800 bg-emerald-950/50 text-emerald-400",
-    warning: "border-amber-800 bg-amber-950/50 text-amber-400",
-    danger: "border-red-800 bg-red-950/50 text-red-400",
-  };
-  return (
-    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase transition-colors ${variants[variant]} ${className}`}>
-      {children}
-    </span>
-  );
-};
-
-const Card = ({ children, className = '', hover = false, onClick }) => (
-  <div 
-    onClick={onClick}
-    className={`rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden ${hover ? 'hover:bg-white/[0.05] hover:border-white/20 transition-all cursor-pointer' : ''} ${className}`}
-  >
-    {children}
-  </div>
-);
 
 
 
@@ -352,26 +319,7 @@ function QuestionContent() {
 
   return (
     <div className="min-h-screen bg-black text-zinc-50 font-sans selection:bg-white/30 selection:text-white">
-      {/* Header */}
-      <header className="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <button 
-              onClick={() => router.push(`/StartPrep/analysis?subjectId=${subjectId}`)}
-              className="p-2 rounded-lg border border-white/5 hover:border-white/15 bg-white/[0.01] text-zinc-400 hover:text-white transition-colors cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <GraduationCap className="text-black w-5 h-5" />
-              </div>
-              <span className="text-white font-bold tracking-tight text-lg">PrepAKTU</span>
-            </div>
-          </div>
-          <Badge variant="primary">{explanation.subjectName}</Badge>
-        </div>
-      </header>
+       <Navbar mode="question" subjectId={subjectId}/>
 
       {/* Main Content */}
       <main className="container mx-auto px-6 pt-24 pb-20">
@@ -818,10 +766,7 @@ function QuestionContent() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-8 text-center text-sm text-zinc-600 border-t border-white/10 bg-black">
-        <p>© 2026 PrepAKTU. Study smart, not hard.</p>
-      </footer>
+      <Footer simple={true} />
     </div>
   );
 }

@@ -3,6 +3,12 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import Button from "@/Components/Button";
+import Badge from "@/Components/Badge";
+import Card from "@/Components/Card";
+import SafeChart from "@/Components/SafeChart";
+import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 import { 
   BookOpen, 
   Target, 
@@ -87,76 +93,6 @@ const getSubjectDetails = (id) => {
   return null;
 };
 
-const Button = ({ children, variant = 'primary', className = '', onClick, ...props }) => {
-  const baseStyle = "inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 rounded-md";
-  const variants = {
-    primary: "bg-white text-black hover:bg-zinc-200 shadow-[0_0_15px_rgba(255,255,255,0.1)]",
-    secondary: "bg-zinc-900 text-white border border-zinc-800 hover:bg-zinc-800 hover:text-zinc-50",
-    ghost: "hover:bg-zinc-800 hover:text-zinc-50 text-zinc-400",
-    danger: "bg-red-950 text-red-100 border border-red-900 hover:bg-red-900",
-  };
-  return (
-    <button onClick={onClick} className={`${baseStyle} ${variants[variant]} ${className}`} {...props}>
-      {children}
-    </button>
-  );
-};
-
-const Badge = ({ children, variant = 'default', className = '' }) => {
-  const variants = {
-    default: "border-zinc-800 bg-zinc-900/50 text-zinc-300",
-    primary: "border-white/20 bg-white/10 text-white",
-    success: "border-emerald-800 bg-emerald-950/50 text-emerald-400",
-    warning: "border-amber-800 bg-amber-950/50 text-amber-400",
-    danger: "border-red-800 bg-red-950/50 text-red-400",
-  };
-  return (
-    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase transition-colors ${variants[variant]} ${className}`}>
-      {children}
-    </span>
-  );
-};
-
-const Card = ({ children, className = '', hover = false, onClick }) => (
-  <div 
-    onClick={onClick}
-    className={`rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden ${hover ? 'hover:bg-white/[0.05] hover:border-white/20 transition-all cursor-pointer' : ''} ${className}`}
-  >
-    {children}
-  </div>
-);
-
-const SafeChart = ({ children }) => {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  return mounted ? children : <div className="w-full h-full" />;
-};
-
-const Navbar = () => (
-  <header className="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
-    <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-      <Link href="/">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-            <GraduationCap className="text-black w-5 h-5" />
-          </div>
-          <span className="text-white font-bold tracking-tight text-lg">PrepAKTU</span>
-        </div>
-      </Link>
-      <div className="flex items-center gap-4">
-        <div className="hidden sm:flex items-center gap-2 text-sm text-zinc-400 mr-4">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-          Pro Analytics Active
-        </div>
-        <div className="w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center">
-          <span className="text-xs font-bold text-white">S</span>
-        </div>
-      </div>
-    </div>
-  </header>
-);
 
 const DashboardHero = ({ sessionData }) => (
   <motion.div 
@@ -438,7 +374,7 @@ function AnalysisContent() {
 
   return (
     <div className="min-h-screen bg-black text-zinc-50 font-sans selection:bg-white/30 selection:text-white">
-      {sessionData && <Navbar />}
+      {sessionData && <Navbar mode="analysis" />}
       
       <main>
         {loading ? (
@@ -521,9 +457,7 @@ function AnalysisContent() {
         )}
       </main>
       
-      <footer className="py-8 text-center text-sm text-zinc-600 border-t border-white/10">
-        <p>© 2026 PrepAKTU. Study smart, not hard.</p>
-      </footer>
+      <Footer simple={true} />
     </div>
   );
 }

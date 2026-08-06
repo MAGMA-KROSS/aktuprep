@@ -1,6 +1,13 @@
 "use client"
 import Link from "next/link";
 import React, { useState, useEffect } from 'react';
+import Button from "@/Components/Button";
+import Badge from "@/Components/Badge";
+import Card from "@/Components/Card";
+import SafeChart from "@/Components/SafeChart";
+import FadeIn from "@/Components/FadeIn";
+import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   BookOpen,
@@ -63,126 +70,7 @@ const MOCK_TREND_DATA = [
   { year: '2023', difficulty: 65 },
 ];
 
-const Button = ({ children, variant = 'primary', className = '', ...props }) => {
-  const baseStyle = "inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 rounded-md";
-  const variants = {
-    primary: "bg-white text-black hover:bg-zinc-200 shadow-[0_0_15px_rgba(255,255,255,0.1)]",
-    secondary: "bg-zinc-900 text-white border border-zinc-800 hover:bg-zinc-800 hover:text-zinc-50",
-    ghost: "hover:bg-zinc-800 hover:text-zinc-50 text-zinc-400",
-  };
-  return (
-    <button className={`${baseStyle} ${variants[variant]} ${className}`} {...props}>
-      {children}
-    </button>
-  );
-};
 
-const Badge = ({ children, className = '' }) => (
-  <span className={`inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2 ${className}`}>
-    {children}
-  </span>
-);
-
-const Card = ({ children, className = '' }) => (
-  <div className={`rounded-xl border border-white/10 bg-white/[0.01] backdrop-blur-sm overflow-hidden ${className}`}>
-    {children}
-  </div>
-);
-
-const SafeChart = ({ children }) => {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  return mounted ? children : <div className="w-full h-full" />;
-};
-
-const FadeIn = ({ children, delay = 0, className = '', direction = 'up' }) => {
-  const directions = {
-    up: { y: 20, x: 0 },
-    down: { y: -20, x: 0 },
-    left: { x: 20, y: 0 },
-    right: { x: -20, y: 0 },
-    none: { x: 0, y: 0 }
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, ...directions[direction] }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
-      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-              <GraduationCap className="text-black w-5 h-5" />
-            </div>
-            <span className="text-white font-bold tracking-tight text-lg">PrepAKTU</span>
-          </div>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#features" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Features</a>
-          <a href="#pyq-analysis" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">PYQ Analysis</a>
-          <a href="#subjects" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Subjects</a>
-        </nav>
-
-        <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost">Sign In</Button>
-          <Button>Start Preparing</Button>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button className="md:hidden text-zinc-400 hover:text-white" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-b border-white/10 bg-black/95 backdrop-blur-xl overflow-hidden"
-          >
-            <div className="flex flex-col px-6 py-4 gap-4">
-              <a href="#features" onClick={() => setIsOpen(false)} className="text-zinc-400 hover:text-white py-2">Features</a>
-              <a href="#pyq-analysis" onClick={() => setIsOpen(false)} className="text-zinc-400 hover:text-white py-2">PYQ Analysis</a>
-              <a href="#subjects" onClick={() => setIsOpen(false)} className="text-zinc-400 hover:text-white py-2">Subjects</a>
-              <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
-                <Button variant="secondary" className="w-full justify-center">Sign In</Button>
-                <Button className="w-full justify-center">Start Preparing</Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
-  );
-};
 
 const Hero = () => {
   return (
@@ -221,10 +109,12 @@ const Hero = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Button variant="secondary" className="w-full sm:w-auto text-base h-12 px-8">
-              <Search className="w-4 h-4 mr-2" />
-              Analyze PYQs
-            </Button>
+            <Link href="/pyps">
+              <Button variant="secondary" className="w-full sm:w-auto text-base h-12 px-8">
+                <Search className="w-4 h-4 mr-2" />
+                Download PYQs
+              </Button>
+            </Link>
           </div>
         </motion.div>
 
@@ -607,65 +497,7 @@ const CTA = () => (
   </section>
 );
 
-const Footer = () => (
-  <footer className="border-t border-white/10 bg-black pt-16 pb-8">
-    <div className="container mx-auto px-6">
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-16">
-        <div className="col-span-2 lg:col-span-2">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-6 h-6 bg-white rounded flex items-center justify-center">
-              <GraduationCap className="text-black w-4 h-4" />
-            </div>
-            <span className="text-white font-bold text-lg">PrepAKTU</span>
-          </div>
-          <p className="text-zinc-500 text-sm max-w-xs mb-6">
-            The modern preparation platform for AKTU students. Score better marks with data-driven insights.
-          </p>
-          <div className="flex gap-4">
-            {/* Social Placeholders */}
-            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:text-white cursor-pointer transition-colors">𝕏</div>
-            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:text-white cursor-pointer transition-colors">in</div>
-            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:text-white cursor-pointer transition-colors">gh</div>
-          </div>
-        </div>
 
-        <div>
-          <h4 className="text-white font-medium mb-4">Product</h4>
-          <ul className="space-y-2 text-sm text-zinc-500">
-            <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Subjects</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">PYQ Analysis</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-white font-medium mb-4">Resources</h4>
-          <ul className="space-y-2 text-sm text-zinc-500">
-            <li><a href="#" className="hover:text-white transition-colors">Syllabus</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Study Guides</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-white font-medium mb-4">Legal</h4>
-          <ul className="space-y-2 text-sm text-zinc-500">
-            <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-sm text-zinc-600">
-        <p>© 2026 PrepAKTU. All rights reserved.</p>
-        <p className="mt-2 md:mt-0">Not officially affiliated with Dr. A.P.J. Abdul Kalam Technical University.</p>
-      </div>
-    </div>
-  </footer>
-);
 
 export default function App() {
   return (

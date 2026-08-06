@@ -104,13 +104,13 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/StartPrep">
-              <Button className="w-full sm:w-auto text-base h-12 px-8 group">
+              <Button className="w-full cursor-pointer sm:w-auto text-base h-12 px-8 group">
                 Start Preparing
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             <Link href="/pyps">
-              <Button variant="secondary" className="w-full sm:w-auto text-base h-12 px-8">
+              <Button variant="secondary" className="w-full cursor-pointer sm:w-auto text-base h-12 px-8">
                 <Search className="w-4 h-4 mr-2" />
                 Download PYQs
               </Button>

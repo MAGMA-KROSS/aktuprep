@@ -91,11 +91,10 @@ const Navbar = ({ mode = "home", subjectName = "", subjectId = "" }) => {
   // Default mode: "home"
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-black/80 backdrop-blur-md border-b border-white/10"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? "bg-black/80 backdrop-blur-md border-b border-white/10"
+        : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/">
@@ -123,12 +122,12 @@ const Navbar = ({ mode = "home", subjectName = "", subjectId = "" }) => {
           >
             Features
           </a>
-          <a
-            href="#pyq-analysis"
+          <Link
+            href="/StartPrep"
             className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
           >
             PYQ Analysis
-          </a>
+          </Link>
           <a
             href="#subjects"
             className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"

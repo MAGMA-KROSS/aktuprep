@@ -54,7 +54,9 @@ const SUBJECT_NAMES = {
   cs506: "Constitution of India",
   cs601: "Software Engineering",
   cs602: "Web Technology",
-  cs603: "Computer Networks"
+  ec501: "Digital Signal Processing",
+  ec502: "Integrated Circuits",
+  ec504: "Microprocessor & Microcontroller"
 };
 
 /**

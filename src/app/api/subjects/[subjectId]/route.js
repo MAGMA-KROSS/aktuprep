@@ -24,7 +24,9 @@ import { SUBJECT_MOCK_DATA as MathematicsIVData  } from '@/data/MathematicsIVDat
 import { SUBJECT_MOCK_DATA as PythonProgrammingData  } from '@/data/PythonProgrammingData';
 import { SUBJECT_MOCK_DATA as TechnicalCommunicationData  } from '@/data/TechnicalCommunicationData';
 import { SUBJECT_MOCK_DATA as UniversalHumanValuesAndProfessionalEthicsData  } from '@/data/UniversalHumanValuesAndProfessionalEthicsData';
-
+import { SUBJECT_MOCK_DATA as IntegratedCircuitData } from '@/data/IntegratedCircuitData';
+import { SUBJECT_MOCK_DATA as MicroprocessorData } from '@/data/MicroprocessorData';
+import { SUBJECT_MOCK_DATA as DSPData } from '@/data/DSPData';
 
 const ALL_MOCK_DATA = {
   ...dbmsMockData,
@@ -52,6 +54,9 @@ const ALL_MOCK_DATA = {
   ...PythonProgrammingData,
   ...TechnicalCommunicationData,
   ...UniversalHumanValuesAndProfessionalEthicsData,
+  ...IntegratedCircuitData,
+  ...MicroprocessorData,
+  ...DSPData,
 };
 
 export async function GET(request, { params }) {

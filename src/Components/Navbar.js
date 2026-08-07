@@ -138,7 +138,7 @@ const Navbar = ({ mode = "home", subjectName = "", subjectId = "" }) => {
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost">Sign In</Button>
+          {/* <Button variant="ghost">Sign In</Button> */}
           <Link href="/StartPrep">
             <Button>Start Preparing</Button>
           </Link>
@@ -192,9 +192,9 @@ const Navbar = ({ mode = "home", subjectName = "", subjectId = "" }) => {
                 Subjects
               </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
-                <Button variant="secondary" className="w-full justify-center">
+                {/* <Button variant="secondary" className="w-full justify-center">
                   Sign In
-                </Button>
+                </Button> */}
                 <Link href="/StartPrep">
                   <Button className="w-full justify-center">
                     Start Preparing

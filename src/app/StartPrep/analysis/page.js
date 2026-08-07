@@ -30,69 +30,7 @@ import {
   Cell
 } from 'recharts';
 
-const MOCK_SUBJECTS = {
-  '1st': [
-    { id: 'cs101', name: 'Engineering Physics', code: 'BAS101', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs102', name: 'Engineering Mathematics-I', code: 'BAS103', pyqCount: 0, difficulty: 'Hard' },
-    { id: 'cs103', name: 'Fundamentals of Electrical Engineering', code: 'BEE101', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs104', name: 'Fundamentals of Mechanical Engineering', code: 'BME101', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs105', name: 'Fundamentals of Electronics Engineering', code: 'BEC201', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs106', name: 'Programming for Problem Solving', code: 'BCS201', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs107', name: 'Environment and Ecology', code: 'BAS204', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs108', name: 'Engineering Chemistry', code: 'BAS202', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs109', name: 'Soft Skills', code: 'BAS105', pyqCount: 0, difficulty: 'Easy' }
-  ],
-  '2nd': [
-    { id: 'cs201', name: 'Engineering Physics', code: 'BAS101', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs202', name: 'Engineering Chemistry', code: 'BAS202', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs203', name: 'Fundamentals of Electrical Engineering', code: 'BEE101', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs204', name: 'Fundamentals of Mechanical Engineering', code: 'BME101', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs205', name: 'Engineering Mathematics-II', code: 'BAS203', pyqCount: 0, difficulty: 'Hard' },
-    { id: 'cs206', name: 'Fundamentals of Electronics Engineering', code: 'BEC201', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs207', name: 'Programming for Problem Solving', code: 'BCS201', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs208', name: 'Environment and Ecology', code: 'BAS204', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs209', name: 'Soft Skills', code: 'BAS105', pyqCount: 0, difficulty: 'Easy' }
-  ],
-  '3rd': [
-    { id: 'cs301', name: 'Mathematics-IV', code: 'BAS303', pyqCount: 0, difficulty: 'Hard' },
-    { id: 'cs302', name: 'Universal Human Values and Professional Ethics', code: 'BVE301', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs303', name: 'Data Structure', code: 'BCS301', pyqCount: 0, difficulty: 'Hard' },
-    { id: 'cs304', name: 'Computer Organization and Architecture', code: 'BCS302', pyqCount: 0, difficulty: 'Hard' },
-    { id: 'cs305', name: 'Discrete Structures & Theory of Logic', code: 'BCS303', pyqCount: 0, difficulty: 'Medium' },
-    { id: 'cs306', name: 'Technical communication', code: 'BAS301', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs307', name: 'Energy Science and Enineering', code: 'BOE304', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs308', name: 'Python Programming', code: 'BCC302', pyqCount: 0, difficulty: 'Easy' },
-    { id: 'cs309', name: 'Cyber Security', code: 'BCC301', pyqCount: 0, difficulty: 'Easy' }
-  ],
-  '4th': [
-    { id: 'cs401', name: 'Operating Systems', code: 'KCS401', pyqCount: 195, difficulty: 'Medium' },
-    { id: 'cs402', name: 'TAFL', code: 'KCS402', pyqCount: 140, difficulty: 'Hard' },
-    { id: 'cs403', name: 'Python Programming', code: 'KNC402', pyqCount: 110, difficulty: 'Easy' }
-  ],
-  '5th': [
-    { id: 'cs501', name: 'Database Management System', code: 'BCS501', pyqCount: 144, difficulty: 'Medium' },
-    { id: 'cs502', name: 'Design and alalysis of algorithm', code: 'BCS503', pyqCount: 144, difficulty: 'Hard' },
-    { id: 'cs503', name: 'Introduction to Data analytics and visualization', code: 'BCDS501', pyqCount: 94, difficulty: 'Easy' },
-    { id: 'cs504', name: 'Application of soft computing', code: 'BCS056', pyqCount: 119, difficulty: 'Medium' },
-    { id: 'cs507', name: 'Business intellignece and analytics', code: 'BCDS051', pyqCount: 72, difficulty: 'Medium' },
-    { id: 'cs505', name: 'Essence of The Indian culture', code: 'BNC502', pyqCount: 164, difficulty: 'Easy' },
-    { id: 'cs506', name: 'Constitution of India', code: 'BNC501', pyqCount: 189, difficulty: 'Easy' }
-  ],
-  '6th': [
-    { id: 'cs601', name: 'Software Engineering', code: 'KCS601', pyqCount: 150, difficulty: 'Easy' },
-    { id: 'cs602', name: 'Web Technology', code: 'KCS602', pyqCount: 175, difficulty: 'Medium' },
-    { id: 'cs603', name: 'Computer Networks', code: 'KCS603', pyqCount: 190, difficulty: 'Medium' }
-  ]
-};
-
-const getSubjectDetails = (id) => {
-  for (const sem in MOCK_SUBJECTS) {
-    const found = MOCK_SUBJECTS[sem].find(sub => sub.id === id);
-    if (found) return { ...found, semester: sem };
-  }
-  return null;
-};
-
+import { getSubjectDetails } from '@/data/mockSubjects';
 
 const DashboardHero = ({ sessionData }) => (
   <motion.div 
@@ -106,8 +44,9 @@ const DashboardHero = ({ sessionData }) => (
     <div className="container mx-auto px-6">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <div className="flex items-center gap-3 mb-4">
-            <Badge variant="primary">{sessionData.semester} Semester</Badge>
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            {sessionData.branch && <Badge variant="primary">{sessionData.branch}</Badge>}
+            <Badge variant="default">{sessionData.semester} Semester</Badge>
             <Badge>{sessionData.subject.code}</Badge>
             <span className="text-xs text-emerald-400 flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -337,6 +276,7 @@ function AnalysisContent() {
 
   const subjectDetails = subjectId ? getSubjectDetails(subjectId) : null;
   const sessionData = subjectDetails ? {
+    branch: subjectDetails.branch,
     semester: subjectDetails.semester,
     subject: subjectDetails
   } : null;

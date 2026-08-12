@@ -27,6 +27,7 @@ import { SUBJECT_MOCK_DATA as UniversalHumanValuesAndProfessionalEthicsData  } f
 import { SUBJECT_MOCK_DATA as IntegratedCircuitData } from '@/data/IntegratedCircuitData';
 import { SUBJECT_MOCK_DATA as MicroprocessorData } from '@/data/MicroprocessorData';
 import { SUBJECT_MOCK_DATA as DSPData } from '@/data/DSPData';
+import { SUBJECT_MOCK_DATA as VLSITechnologyData } from '@/data/VLSITechnologyData';
 
 const ALL_MOCK_DATA = {
   ...dbmsMockData,
@@ -57,6 +58,7 @@ const ALL_MOCK_DATA = {
   ...IntegratedCircuitData,
   ...MicroprocessorData,
   ...DSPData,
+  ...VLSITechnologyData,
 };
 
 export async function GET(request, { params }) {

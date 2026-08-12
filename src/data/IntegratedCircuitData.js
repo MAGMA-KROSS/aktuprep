@@ -241,40 +241,40 @@ export const SUBJECT_MOCK_DATA = {
         id: 1,
         name: 'Unit 1',
         title: 'IC 741 Operational Amplifier',
-        difficulty: 'Hard',
-        difficultyScore: 85,
+        difficulty: 'Medium',
+        difficultyScore: 60,
         expectedMarks: 14,
-        passProbability: 78,
+        passProbability: 85,
         advice: 'Focus on Overall Voltage Gain derivation, DC Analysis of Input Stage, and Current Mirrors.'
       },
       {
         id: 2,
         name: 'Unit 2',
         title: 'Linear Applications & Active Filters',
-        difficulty: 'Hard',
-        difficultyScore: 82,
+        difficulty: 'Medium',
+        difficultyScore: 60,
         expectedMarks: 14,
-        passProbability: 80,
+        passProbability: 85,
         advice: 'Master KHN Filter design, 3-Op-Amp Instrumentation Amplifier gain, and GIC equations.'
       },
       {
         id: 3,
         name: 'Unit 3',
         title: 'Nonlinear Applications',
-        difficulty: 'Medium',
+        difficulty: 'Hard',
         difficultyScore: 70,
         expectedMarks: 14,
-        passProbability: 88,
+        passProbability: 78,
         advice: 'Log/Anti-log amplifiers with temperature compensation and Triangular Wave Generator are essential.'
       },
       {
         id: 4,
         name: 'Unit 4',
         title: 'CMOS Logic',
-        difficulty: 'Medium',
-        difficultyScore: 65,
+        difficulty: 'Easy',
+        difficultyScore: 40,
         expectedMarks: 14,
-        passProbability: 92,
+        passProbability: 95,
         advice: 'CMOS Flip-Flops (SR, D, JK) and PUN/PDN implementation of NAND/NOR gates are high-scoring.'
       },
       {
@@ -282,9 +282,9 @@ export const SUBJECT_MOCK_DATA = {
         name: 'Unit 5',
         title: '555 Timer, VCO & PLL',
         difficulty: 'Easy',
-        difficultyScore: 55,
+        difficultyScore: 50,
         expectedMarks: 14,
-        passProbability: 95,
+        passProbability: 92,
         advice: 'PLL block diagram, IC 555 Astable multivibrator, and IC 566 VCO appear every year.'
       }
     ]

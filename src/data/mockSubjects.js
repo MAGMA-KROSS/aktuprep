@@ -114,9 +114,8 @@ export const MOCK_SUBJECTS = {
     '5th': [
       { id: 'ec501', name: 'Digital Signal Processing', code: 'BEC501', pyqCount: 160, difficulty: 'Hard' },
       { id: 'ec502', name: 'Integrated Circuits', code: 'BEC502', pyqCount: 140, difficulty: 'Medium' },
-      // { id: 'ec503', name: 'Communication Engineering', code: 'BEC503', pyqCount: 155, difficulty: 'Medium' },
       { id: 'ec504', name: 'Microprocessor & Microcontroller', code: 'BEC051', pyqCount: 125, difficulty: 'Hard' },
-      // { id: 'cs505', name: 'Essence of The Indian culture', code: 'BNC502', pyqCount: 164, difficulty: 'Easy' },
+      { id: 'ec505', name: 'VLSI Technology', code: 'BEC054', pyqCount: 175, difficulty: 'Hard' },
       { id: 'cs506', name: 'Constitution of India', code: 'BNC501', pyqCount: 189, difficulty: 'Easy' }
     ],
     '6th': [

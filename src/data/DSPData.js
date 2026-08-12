@@ -242,9 +242,9 @@ export const SUBJECT_MOCK_DATA = {
         name: 'Unit 1',
         title: 'DSP Introduction & Filter Realization',
         difficulty: 'Medium',
-        difficultyScore: 75,
+        difficultyScore: 60,
         expectedMarks: 14,
-        passProbability: 82,
+        passProbability: 85,
         advice: 'Focus on IIR Realization (DF-I, DF-II, Cascade, Parallel) and FIR Linear Phase structures.'
       },
       {
@@ -252,9 +252,9 @@ export const SUBJECT_MOCK_DATA = {
         name: 'Unit 2',
         title: 'IIR Filter Design',
         difficulty: 'Hard',
-        difficultyScore: 92,
+        difficultyScore: 90,
         expectedMarks: 14,
-        passProbability: 68,
+        passProbability: 65,
         advice: 'Butterworth and Chebyshev filter design numericals using Bilinear Transformation dominate the exam paper.'
       },
       {
@@ -262,7 +262,7 @@ export const SUBJECT_MOCK_DATA = {
         name: 'Unit 3',
         title: 'FIR Design & Finite Word Length Effects',
         difficulty: 'Hard',
-        difficultyScore: 85,
+        difficultyScore: 80,
         expectedMarks: 14,
         passProbability: 75,
         advice: 'Windowing technique numericals (Hamming/Kaiser) and Gibbs Phenomenon theory are essential.'
@@ -272,19 +272,19 @@ export const SUBJECT_MOCK_DATA = {
         name: 'Unit 4',
         title: 'DFT & FFT',
         difficulty: 'Hard',
-        difficultyScore: 88,
+        difficultyScore: 90,
         expectedMarks: 14,
-        passProbability: 72,
+        passProbability: 65,
         advice: 'DIT FFT butterfly flow graph (N=8), 4-point/8-point DFT, and Circular Convolution numericals are guaranteed 14-mark questions.'
       },
       {
         id: 5,
         name: 'Unit 5',
         title: 'Multirate DSP (MDSP)',
-        difficulty: 'Easy',
+        difficulty: 'Medium',
         difficultyScore: 60,
         expectedMarks: 14,
-        passProbability: 94,
+        passProbability: 88,
         advice: 'Multirate DSP fundamentals, Decimation/Interpolation, QMF banks, and Sub-band coding are high-scoring.'
       }
     ]

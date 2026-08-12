@@ -242,7 +242,7 @@ export const SUBJECT_MOCK_DATA = {
         name: 'Unit 1',
         title: '8085 Microprocessor Architecture & Interfacing',
         difficulty: 'Medium',
-        difficultyScore: 72,
+        difficultyScore: 60,
         expectedMarks: 14,
         passProbability: 85,
         advice: 'Master 8085 Block Diagram, Memory Interfacing scheme, and Bus Demultiplexing.'
@@ -252,9 +252,9 @@ export const SUBJECT_MOCK_DATA = {
         name: 'Unit 2',
         title: '8085 Programming',
         difficulty: 'Hard',
-        difficultyScore: 85,
+        difficultyScore: 70,
         expectedMarks: 14,
-        passProbability: 75,
+        passProbability: 78,
         advice: 'SIM/RIM Interrupts and Array-based ALP programs (Largest/Smallest) are exam staples.'
       },
       {
@@ -262,29 +262,29 @@ export const SUBJECT_MOCK_DATA = {
         name: 'Unit 3',
         title: '8086 & Peripheral Devices',
         difficulty: 'Hard',
-        difficultyScore: 88,
+        difficultyScore: 80,
         expectedMarks: 14,
-        passProbability: 72,
+        passProbability: 75,
         advice: 'Focus on 8086 Addressing Modes, Memory Segmentation, 8259 PIC and 8257 DMA Controller.'
       },
       {
         id: 4,
         name: 'Unit 4',
         title: '8051 Basics',
-        difficulty: 'Easy',
-        difficultyScore: 55,
+        difficulty: 'Medium',
+        difficultyScore: 60,
         expectedMarks: 14,
-        passProbability: 95,
+        passProbability: 85,
         advice: '8051 Memory Organization (RAM/ROM) and 8051 Block Diagram score full marks easily.'
       },
       {
         id: 5,
         name: 'Unit 5',
         title: '8051 Programming & Interfacing',
-        difficulty: 'Medium',
+        difficulty: 'Hard',
         difficultyScore: 70,
         expectedMarks: 14,
-        passProbability: 88,
+        passProbability: 78,
         advice: 'DAC Interfacing for Sine Wave, TMOD/TCON timer modes, and SCON serial communication are guaranteed questions.'
       }
     ]
